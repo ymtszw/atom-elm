@@ -205,7 +205,7 @@
     'name': 'keyword.other.port.elm'
   }
   {
-    'match': '\\b([A-Z]\\w*)\\.\\b'
+    'match': '\\b([A-Z][A-Za-z0-9_\']*)\\.'
     'name': 'module-namespace.elm'
     'captures':
       '1':
