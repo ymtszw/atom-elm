@@ -1,0 +1,36 @@
+'.source.elm':
+  '{-| (doc) -}':
+    'prefix': 'doc'
+    'body': '{-| $1\n-}'
+  'module':
+    'prefix': 'module'
+    'body': 'module ${1:ModuleName} exposing (${2:exposedFunctions})'
+  'function':
+    'prefix': 'function'
+    'body':
+      """
+      ${1:functionName} : ${2:Types}
+      ${1:functionName} $3=
+      \t${4:body}
+      """
+  'case':
+    'prefix': 'case'
+    'body': 'case $1 of\n\t${2:pattern} ->'
+  'if-then-else':
+    'prefix': 'if'
+    'body':
+      """
+      if $1 then
+      \t$2
+      else
+      \t$3
+      """
+  'let-in':
+    'prefix': 'let'
+    'body':
+      """
+      let
+      \t$1
+      in
+      \t$2
+      """
