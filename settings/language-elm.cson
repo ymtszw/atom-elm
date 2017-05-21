@@ -3,3 +3,4 @@
     'autoIndentOnPaste': false
     'commentStart': '-- '
     'increaseIndentPattern': '((^.*(=|[|!%$?~+:\\-.=</>&\\\\*^]+|\\bthen|\\belse|\\bof)\\s*$)|(^.*\\bif(?!.*\\bthen\\b.*\\belse\\b.*).*$))'
+    'decreaseIndentPattern': '^\\s*(else\\b|in\\b)'
