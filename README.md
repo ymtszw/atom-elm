@@ -2,6 +2,10 @@
 
 Syntax highlighting and autocomplete for the [Elm language](http://elm-lang.org/).
 
+## Fork note
+
+This is fork repository of [edubkendo/atom-elm](https://github.com/edubkendo/atom-elm), refining syntax pattern-matches and adding snippets.
+
 ## Installation
 
 There are two ways to install the Atom Elm Extension: using the editor, or using the command line.
@@ -14,7 +18,7 @@ You can install packages within Atom. To do so:
   2. Click the "Install" menu item
   3. Search for "language-elm"
   4. Click the install button on the "language-elm" result
-  
+
 [More documentation for how to use the package manager](https://atom.io/docs/v1.5.3/using-atom-atom-packages) can be found on the official Atom site.
 
 #### Screenshot
@@ -35,7 +39,7 @@ In order to get autocomplete working, please:
   2. `npm install -g elm-oracle`
   3. `which elm-oracle` on Unix/Linux or `where.exe elm-oracle` on Windows
   4. Copy the path to elm-oracle
-  5. Open up the language-elm settings in Atom  
+  5. Open up the language-elm settings in Atom
     - Open up the Atom Settings / Preferences tab
     - Click on "Packages"
     - Find the "language-elm" package in the list
