@@ -109,6 +109,21 @@
     ]
   }
   {
+    'name': 'meta.declaration.function.elm'
+    'begin': '^(port\\s+)?([a-z][A-Za-z0-9_\']*\\s+):\\s*'
+    'beginCaptures':
+      '1':
+        'name': 'keyword.other.port.elm'
+      '2':
+        'name': 'entity.name.function.elm'
+    'end': '$|;'
+    'patterns': [
+      {
+        'include': '#type_signature'
+      }
+    ]
+  }
+  {
     'match': '\\b(type|case|of|let|in|as|port|exposing|alias|infixr|export)\\s+'
     'name': 'keyword.other.elm'
   }
@@ -180,25 +195,6 @@
         'name': 'punctuation.definition.string.end.elm'
     'match': '(?x)\n\t\t\t(\')\n\t\t\t(?:\n\t\t\t\t[\\ -\\[\\]-~]\t\t\t\t\t\t\t\t# Basic Char\n\t\t\t  | (\\\\(?:NUL|SOH|STX|ETX|EOT|ENQ|ACK|BEL|BS|HT|LF|VT|FF|CR|SO|SI|DLE\n\t\t\t\t\t|DC1|DC2|DC3|DC4|NAK|SYN|ETB|CAN|EM|SUB|ESC|FS|GS|RS\n\t\t\t\t\t|US|SP|DEL|[abfnrtv\\\\\\"\'\\&]|x[0-9a-fA-F]{1,5}))\t\t# Escapes\n\t\t\t  | (\\^[A-Z@\\[\\]\\\\\\^_])\t\t\t\t\t\t# Control Chars\n\t\t\t)\n\t\t\t(\')\n\t\t\t'
     'name': 'string.quoted.single.elm'
-  }
-  {
-    'begin': '^(port\\s+)?([a-z_][a-zA-Z0-9_\']*|\\([|!%$+\\-.,=</>]+\\))\\s*((:)([:]+)?)'
-    'beginCaptures':
-      '1':
-        'name': 'keyword.other.port.elm'
-      '2':
-        'name': 'entity.name.function.elm'
-      '4':
-        'name': 'keyword.other.colon.elm'
-      '5':
-        'name': 'invalid'
-    'end': '$\\n?'
-    'name': 'meta.function.type-declaration.elm'
-    'patterns': [
-      {
-        'include': '#type_signature'
-      }
-    ]
   }
   {
     'match': '\\bport\\s+'
