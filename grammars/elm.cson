@@ -309,7 +309,7 @@
       }
     ]
   'infix_op':
-    'match': '(\\([|!%$+:\\-.=</>\\,]+\\))'
+    'match': '(\\([|?!%$+:\\-.=</>\\,]+\\))'
     'name': 'entity.name.function.infix.elm'
   'module_exports':
     'begin': '\\('
