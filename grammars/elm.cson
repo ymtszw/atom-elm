@@ -143,7 +143,7 @@
         'name': 'keyword.other.lambda.function.arrow.elm'
     'patterns': [
       {
-        'match': '\\b(_)[\\s,]'
+        'match': '\\b(_)\\b'
         'captures':
           '1':
             'name': 'unused.comment.elm'
@@ -274,8 +274,10 @@
     'name': 'punctuation.separator.comma.elm'
   }
   {
-    'match': '\\b_[\\s,]'
-    'name': 'unused.comment.elm'
+    'match': '\\b(_)\\b'
+    'captures':
+      '1':
+        'name': 'unused.comment.elm'
   }
 ]
 'repository':
