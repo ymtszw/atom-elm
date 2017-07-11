@@ -10,6 +10,7 @@
       '2':
         'name': 'punctuation.definition.entity.elm'
     'match': '(`)[a-zA-Z_\']*?(`)'
+    'comment': 'no more available in 0.18'
     'name': 'keyword.operator.function.infix.elm'
   }
   {
@@ -27,8 +28,9 @@
         'name': 'keyword.other.elm'
       '3':
         'name': 'keyword.other.elm'
-    'end': '$|;'
+    'end': '^$'
     'name': 'meta.declaration.module.elm'
+    'comment': 'effect modules are basically not used in user applications'
     'patterns': [
       {
         'include': '#module_name_on_definition'
@@ -39,6 +41,7 @@
           '1':
             'name': 'keyword.other.elm'
         'end': '\\}'
+        'comment': 'not available in 0.18'
         'patterns': [
           {
             'include': '#type_signature'
@@ -54,6 +57,7 @@
       }
       {
         'match': '(where)'
+        'comment': 'not available in 0.18'
         'name': 'keyword.other.elm'
       }
       {
@@ -71,6 +75,7 @@
         'name': 'invalid'
     'end': '($|;)'
     'name': 'meta.import.elm'
+    'comment': 'there are no more `open` keyword in 0.18, thus invalid'
     'patterns': [
       {
         'match': '(as|exposing)'
@@ -110,12 +115,47 @@
   }
   {
     'name': 'meta.declaration.function.elm'
-    'begin': '^(port\\s+)?([a-z][A-Za-z0-9_\']*\\s+):\\s*'
+    'begin': '^(port\\s+)?([a-z][A-Za-z0-9_\']*\\s+)(:)\\s*'
     'beginCaptures':
       '1':
         'name': 'keyword.other.port.elm'
       '2':
         'name': 'entity.name.function.elm'
+      '3':
+        'name': 'keyword.other.definition.type.colon.elm'
+    'end': '$|;'
+    'comment': 'includes up to next line of function signature header line'
+    'patterns': [
+      {
+        'include': '#type_signature'
+      }
+    ]
+  }
+  {
+    'name': 'meta.lambda.function.elm'
+    'begin': '(\\\\)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword.other.lambda.function.backslash.elm'
+    'end': '(->)'
+    'endCaptures':
+      '1':
+        'name': 'keyword.other.lambda.function.arrow.elm'
+    'patterns': [
+      {
+        'match': '\\b(_)[\\s,]'
+        'captures':
+          '1':
+            'name': 'unused.comment.elm'
+      }
+    ]
+  }
+  {
+    'name': 'meta.declaration.function.type_signature.wrapped.elm'
+    'begin': '^\\s+(->)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword.other.arrow.elm'
     'end': '$|;'
     'patterns': [
       {
@@ -222,12 +262,20 @@
     'include': '#infix_op'
   }
   {
+    'match': '->'
+    'name': 'keyword.other.arrow.elm'
+  }
+  {
     'match': '[|!%$?~+:\\-.=</>&\\\\*^]+'
     'name': 'keyword.operator.elm'
   }
   {
     'match': ','
     'name': 'punctuation.separator.comma.elm'
+  }
+  {
+    'match': '\\b_[\\s,]'
+    'name': 'unused.comment.elm'
   }
 ]
 'repository':
@@ -329,6 +377,7 @@
       {
         'match': '=>'
         'name': 'keyword.other.big-arrow.elm'
+        'comment': 'not available in 0.18'
       }
       {
         'match': '\\b([A-Z][a-zA-Z0-9_\']*)\\.\\b'
@@ -340,6 +389,15 @@
       {
         'match': '\\b[A-Z][a-zA-Z0-9_\']*\\b'
         'name': 'support.type.prelude.elm'
+      }
+      {
+        'match': '([a-z][a-zA-Z0-9_\']*)\\s*(:)'
+        'name': 'meta.other.record-type.elm'
+        'captures':
+          '1':
+            'meta.other.record-type.key.elm'
+          '2':
+            'keyword.operator.elm'
       }
       {
         'match': '\\b[a-z][a-zA-Z0-9_\']*\\b'
