@@ -115,13 +115,15 @@
   }
   {
     'name': 'meta.declaration.function.elm'
-    'begin': '^(port\\s+)?([a-z][A-Za-z0-9_\']*\\s+)(:)\\s*'
+    'begin': '^((port\\s+)?([a-z][A-Za-z0-9_\']*)|(\\([|?!%$+:.=</>,-]+\\)))\\s+(:)\\s*'
     'beginCaptures':
-      '1':
-        'name': 'keyword.other.port.elm'
       '2':
-        'name': 'entity.name.function.elm'
+        'name': 'keyword.other.port.elm'
       '3':
+        'name': 'entity.name.function.elm'
+      '4':
+        'name': 'entity.name.function.elm'
+      '5':
         'name': 'keyword.other.definition.type.colon.elm'
     'end': '$|;'
     'comment': 'includes up to next line of function signature header line'
