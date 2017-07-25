@@ -166,7 +166,7 @@
     ]
   }
   {
-    'match': '\\b(type|case|of|let|in|as|port|exposing|alias|infixr|export)\\s+'
+    'match': '\\b(type|case|of|let|in|as|port|exposing|alias|infix[lr]|export)\\s+'
     'name': 'keyword.other.elm'
   }
   {
