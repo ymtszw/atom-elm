@@ -11,6 +11,8 @@ This is fork repository of [edubkendo/atom-elm](https://github.com/edubkendo/ato
 Also, somewhat fixed [Elm Oracle](https://github.com/ElmCast/elm-oracle) integration.
 It currently requires you to install `elm-oracle` by yourself. (Removed runtime dependency to `elm-oracle` in package.json)
 
+Though `elm-oracle` itself is not actively updated for 0.17+, so activating it is not so recommendable for now.
+
 Since original `atom-elm` repository is stale for some time, contributions are welcomed.
 
 ## Installation
