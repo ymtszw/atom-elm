@@ -10,9 +10,6 @@
   "scripts": {
     "test": "./node_modules/.bin/standard"
   },
-  "dependencies": {
-    "elm-oracle": "0.2.0"
-  },
   "devDependencies": {
     "babel-eslint": "4.1.6",
     "pre-commit": "1.1.2",
