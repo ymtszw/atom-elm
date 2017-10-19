@@ -356,10 +356,10 @@
       }
     ]
   'module_name':
-    'match': '[A-Z][A-Za-z._\']*'
+    'match': '[A-Z][A-Za-z0-9._\']*'
     'name': 'variable.other.constant.elm'
   'module_name_on_definition':
-    'match': '[A-Z][A-Za-z._\']*'
+    'match': '[A-Z][A-Za-z0-9._\']*'
     'name': 'entity.name.type.module.elm'
   'type_signature':
     'patterns': [
