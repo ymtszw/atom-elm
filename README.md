@@ -8,10 +8,10 @@ This is a fork repository of [edubkendo/atom-elm](https://github.com/edubkendo/a
 refining syntax highlights and adding snippets for Elm 0.18+.
 
 Also, removed autocomplete provider feature using [Elm Oracle](https://github.com/ElmCast/elm-oracle),
-since `elm-oracle` is not actively updated for 0.17+.
+since `elm-oracle` itself is not actively updated for 0.17+.
 We recommend using [elmjutsu](https://github.com/halohalospecial/atom-elmjutsu) for now.
 
-Original `atom-elm` repository is stale for some time, contributions are welcomed.
+Original `atom-elm` repository is stale for some time, so contributions are welcomed.
 
 ## Installation
 
