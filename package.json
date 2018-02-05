@@ -1,32 +1,10 @@
 {
   "name": "language-elm",
   "version": "1.5.1-ymtszw",
-  "description": "Syntax highlighting and autocompletion for the language Elm, forked by ymtszw",
+  "description": "Syntax highlighting and autocompletion for the language Elm 0.18+, forked by ymtszw",
   "repository": "https://github.com/ymtszw/language-elm",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
   },
-  "scripts": {
-    "test": "./node_modules/.bin/standard"
-  },
-  "devDependencies": {
-    "babel-eslint": "4.1.6",
-    "pre-commit": "1.1.2",
-    "standard": "5.4.1"
-  },
-  "main": "./lib/main",
-  "providedServices": {
-    "autocomplete.provider": {
-      "versions": {
-        "2.0.0": "provide"
-      }
-    }
-  },
-  "standard": {
-    "parser": "babel-eslint",
-    "globals": [
-      "atom"
-    ]
-  }
 }
