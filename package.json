@@ -1,6 +1,6 @@
 {
   "name": "language-elm",
-  "version": "1.5.1-ymtszw",
+  "version": "2.0.0-ymtszw",
   "description": "Syntax highlighting and autocompletion for the language Elm 0.18+, forked by ymtszw",
   "repository": "https://github.com/ymtszw/language-elm",
   "license": "MIT",
