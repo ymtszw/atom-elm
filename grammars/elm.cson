@@ -2,6 +2,7 @@
   'elm'
 ]
 'name': 'Elm'
+'scopeName': 'source.elm'
 'patterns': [
   {
     'captures':
@@ -62,7 +63,7 @@
       }
       {
         'match': '[a-z]+'
-        'name': 'invalid'
+        'name': 'invalid.illegal'
       }
     ]
   }
@@ -72,7 +73,7 @@
       '1':
         'name': 'keyword.other.elm'
       '3':
-        'name': 'invalid'
+        'name': 'invalid.illegal'
     'end': '($|;)'
     'name': 'meta.import.elm'
     'comment': 'there are no more `open` keyword in 0.18, thus invalid'
@@ -181,9 +182,6 @@
   {
     'match': '\\b([0-9]+)\\b'
     'name': 'constant.numeric.elm'
-  }
-  {
-    'include': '#std_library'
   }
   {
     'begin': '"""'
@@ -415,20 +413,3 @@
         'include': '#comments'
       }
     ]
-  'std_library':
-    'patterns': [
-      {
-        'include': '#basics'
-      }
-    ]
-  'basics':
-    'captures':
-      '1':
-        'name': 'variable.parameter'
-      '2':
-        'name': 'variable.parameter'
-      '3':
-        'name': 'support.function.elm'
-    'match': '\\b(Basics)(.)(abs|acos|always|asin|atan|atan2|ceiling|clamp|compare|cos|curry|degrees|div|e|flip|floor|fromPolar|fst|id|isInfinite|isNaN|logBase|max|min|mod|not|otherwise|pi|radians|rem|round|sin|snd|sqrt|tan|toFloat|toPolar|truncate|turns|uncurry|xor|Order)\\b'
-    'name': 'variable.parameter'
-'scopeName': 'source.elm'
