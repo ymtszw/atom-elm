@@ -345,7 +345,7 @@
     'name': 'meta.type.prelude.elm'
     'patterns': [
       {
-        'match': '\\b[A-Z][A-Za-z_\'0-9]+'
+        'match': '\\b[A-Z][A-Za-z_\'0-9]*'
         'name': 'support.type.prelude.elm'
       }
       {
