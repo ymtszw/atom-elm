@@ -146,10 +146,14 @@
         'name': 'keyword.other.lambda.function.arrow.elm'
     'patterns': [
       {
-        'match': '\\b(_)\\b'
-        'captures':
-          '1':
-            'name': 'unused.comment.elm'
+        'include': '#type_tag_or_record_constructor'
+      }
+      {
+        'match': '\\bas\\b'
+        'name': 'keyword.other.elm'
+      }
+      {
+        'include': '#unused_variable'
       }
     ]
   }
@@ -248,8 +252,7 @@
         'name': 'constant.other.elm'
   }
   {
-    'match': '\\b([A-Z][A-Za-z0-9_\']*|\\(\\)|\\[\\])\\b'
-    'name': 'support.type.prelude.elm'
+    'include': '#type_tag_or_record_constructor'
   }
   {
     'include': '#comments'
@@ -274,10 +277,7 @@
     'name': 'punctuation.separator.comma.elm'
   }
   {
-    'match': '\\b(_)\\b'
-    'captures':
-      '1':
-        'name': 'unused.comment.elm'
+    'include': '#unused_variable'
   }
 ]
 'repository':
@@ -321,8 +321,7 @@
         'name': 'entity.name.function.elm'
       }
       {
-        'match': '\\b[A-Z][A-Za-z_\'0-9]*'
-        'name': 'support.type.prelude.elm'
+        'include': '#type_tag_or_record_constructor'
       }
       {
         'match': ','
@@ -345,8 +344,7 @@
     'name': 'meta.type.prelude.elm'
     'patterns': [
       {
-        'match': '\\b[A-Z][A-Za-z_\'0-9]*'
-        'name': 'support.type.prelude.elm'
+        'include': '#type_tag_or_record_constructor'
       }
       {
         'match': ','
@@ -359,6 +357,9 @@
   'module_name_on_definition':
     'match': '[A-Z][A-Za-z0-9._\']*'
     'name': 'entity.name.type.module.elm'
+  'type_tag_or_record_constructor':
+    'match': '\\b[A-Z][A-Za-z_\'0-9]*'
+    'name': 'support.type.prelude.elm'
   'type_signature':
     'patterns': [
       {
@@ -389,8 +390,7 @@
             'name': 'variable.other.constant.elm'
       }
       {
-        'match': '\\b[A-Z][a-zA-Z0-9_\']*\\b'
-        'name': 'support.type.prelude.elm'
+        'include': '#type_tag_or_record_constructor'
       }
       {
         'match': '([a-z][a-zA-Z0-9_\']*)\\s*(:)'
@@ -413,3 +413,8 @@
         'include': '#comments'
       }
     ]
+  'unused_variable':
+    'match': '\\b(_)\\b'
+    'captures':
+      '1':
+        'name': 'unused.comment.elm'
