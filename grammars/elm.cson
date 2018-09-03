@@ -5,13 +5,13 @@
 'scopeName': 'source.elm'
 'patterns': [
   {
+    'match': '(`)[a-zA-Z_\']*?(`)'
     'captures':
       '1':
-        'name': 'punctuation.definition.entity.elm'
+        'name': 'invalid.illegal'
       '2':
-        'name': 'punctuation.definition.entity.elm'
-    'match': '(`)[a-zA-Z_\']*?(`)'
-    'comment': 'no more available in 0.18'
+        'name': 'invalid.illegal'
+    'comment': 'Function infixing. No longer supported as of 0.18'
     'name': 'keyword.operator.function.infix.elm'
   }
   {
@@ -29,54 +29,35 @@
         'name': 'keyword.other.elm'
       '3':
         'name': 'keyword.other.elm'
-    'end': '^$'
+    'end': '^$' # Terminated by a blank line
     'name': 'meta.declaration.module.elm'
-    'comment': 'effect modules are basically not used in user applications'
+    'comment': 'Module declarations. Effect modules are basically not used in user applications though'
     'patterns': [
       {
         'include': '#module_name_on_definition'
       }
       {
-        'begin': '(where)\\s*\\{'
-        'beginCaptures':
-          '1':
-            'name': 'keyword.other.elm'
-        'end': '\\}'
-        'comment': 'not available in 0.18'
-        'patterns': [
-          {
-            'include': '#type_signature'
-          }
-        ]
-      }
-      {
-        'match': '(exposing)'
+        'match': '\\bexposing\\b'
         'name': 'keyword.other.elm'
       }
       {
         'include': '#module_exports'
       }
       {
-        'match': '(where)'
-        'comment': 'not available in 0.18'
-        'name': 'keyword.other.elm'
-      }
-      {
-        'match': '[a-z]+'
+        'match': 'where'
         'name': 'invalid.illegal'
+        'comment': '`where` keyword is no longer supported in Elm'
       }
     ]
   }
   {
-    'begin': '^\\b(import)\\s+((open)\\s+)?'
+    'begin': '^(import)\\s+?'
     'beginCaptures':
       '1':
         'name': 'keyword.other.elm'
-      '3':
-        'name': 'invalid.illegal'
-    'end': '($|;)'
+    'end': '$'
     'name': 'meta.import.elm'
-    'comment': 'there are no more `open` keyword in 0.18, thus invalid'
+    'comment': 'Import syntax.'
     'patterns': [
       {
         'match': '(as|exposing)'
@@ -95,39 +76,31 @@
     ]
   }
   {
-    'begin': '(\\[)(markdown)(\\|)'
-    'beginCaptures':
-      '1':
-        'name': 'keyword.other.elm'
-      '2':
-        'name': 'support.function.prelude.elm'
-      '3':
-        'name': 'keyword.other.elm'
+    'begin': '\\[glsl\\|'
     'end': '(\\|\\])'
-    'endCaptures':
-      '1':
-        'name': 'keyword.other.elm'
-    'name': 'entity.markdown.elm'
+    'name': 'block.special.glsl.elm'
+    'comment': 'Special code block for GLSL, allowed by Elm compiler.'
     'patterns': [
       {
-        'include': 'text.html.basic'
+        'include': 'source.glsl' # Require language-glsl for highlighting
       }
     ]
   }
   {
     'name': 'meta.declaration.function.elm'
-    'begin': '^((port\\s+)?([a-z][A-Za-z0-9_\']*)|(\\([+/*=.$<>:&|^?%#@~!-]+\\)))\\s+(:)\\s*'
+    'comment': 'Function type annotations. Includes up to the next line of function signature header line'
+    'begin': '^((port\\s+)?([a-z][A-Za-z0-9_\']*)|(\\([+/\\\\*=.$<>:&|^?%#@~!-]+\\)))\\s+(:)\\s*'
     'beginCaptures':
       '2':
         'name': 'keyword.other.port.elm'
       '3':
         'name': 'entity.name.function.elm'
       '4':
-        'name': 'entity.name.function.elm'
+        'name': 'invalid.illegal'
+        'comment': 'Custom infix operators. Prohibited in Elm 0.19'
       '5':
         'name': 'keyword.other.definition.type.colon.elm'
-    'end': '$|;'
-    'comment': 'includes up to next line of function signature header line'
+    'end': '$'
     'patterns': [
       {
         'include': '#type_signature'
@@ -163,7 +136,7 @@
     'beginCaptures':
       '1':
         'name': 'keyword.other.arrow.elm'
-    'end': '$|;'
+    'end': '$'
     'patterns': [
       {
         'include': '#type_signature'
@@ -179,9 +152,9 @@
     'name': 'keyword.control.elm'
   }
   {
-    'comment': 'Floats are always decimal'
     'match': '\\b([0-9]+\\.[0-9]+([eE][+-]?[0-9]+)?|[0-9]+[eE][+-]?[0-9]+)\\b'
     'name': 'constant.numeric.float.elm'
+    'comment': 'Floats are always decimal'
   }
   {
     'match': '\\b([0-9]+)\\b'
@@ -230,23 +203,9 @@
     ]
   }
   {
-    'captures':
-      '1':
-        'name': 'punctuation.definition.string.begin.elm'
-      '2':
-        'name': 'constant.character.escape.elm'
-      '3':
-        'name': 'punctuation.definition.string.end.elm'
-    'match': '(?x)\n\t\t\t(\')\n\t\t\t(?:\n\t\t\t\t[\\ -\\[\\]-~]\t\t\t\t\t\t\t\t# Basic Char\n\t\t\t  | (\\\\(?:NUL|SOH|STX|ETX|EOT|ENQ|ACK|BEL|BS|HT|LF|VT|FF|CR|SO|SI|DLE\n\t\t\t\t\t|DC1|DC2|DC3|DC4|NAK|SYN|ETB|CAN|EM|SUB|ESC|FS|GS|RS\n\t\t\t\t\t|US|SP|DEL|[abfnrtv\\\\\\"\'\\&]|x[0-9a-fA-F]{1,5}))\t\t# Escapes\n\t\t\t  | (\\^[A-Z@\\[\\]\\\\\\^_])\t\t\t\t\t\t# Control Chars\n\t\t\t)\n\t\t\t(\')\n\t\t\t'
-    'name': 'string.quoted.single.elm'
-  }
-  {
-    'match': '\\bport\\s+'
-    'name': 'keyword.other.port.elm'
-  }
-  {
     'match': '\\b([A-Z][A-Za-z0-9_\']*)\\.'
     'name': 'module-namespace.elm'
+    'comment': 'Module names as namespaces. Ones followed by a period basically'
     'captures':
       '1':
         'name': 'constant.other.elm'
@@ -258,8 +217,13 @@
     'include': '#comments'
   }
   {
-    'match': '^[a-z][A-Za-z0-9_\']*\\s+'
+    'match': '^([a-z][A-Za-z0-9_]*|(\\([+/\\\\*=.$<>:&|^?%#@~!-]+\\)))\\s+'
+    'captures':
+      '2':
+        'name': 'invalid.illegal'
+        'comment': 'Custom infix operators cannot be defined by ordinary applications/packages as of Elm 0.19'
     'name': 'entity.name.function.elm'
+    'comment': 'Function definitions. Note that port functions can only be defined with type annotations, not with actual implementations.'
   }
   {
     'include': '#infix_op'
@@ -269,7 +233,7 @@
     'name': 'keyword.other.arrow.elm'
   }
   {
-    'match': '[|!%$?~+:\\-.=</>&\\\\*^]+'
+    'match': '[+/\\\\*=.$<>:&|^?%#@~!-]+'
     'name': 'keyword.operator.elm'
   }
   {
@@ -309,7 +273,7 @@
       }
     ]
   'infix_op':
-    'match': '(\\([+/*=.$<>:&|^?%#@~!-]+\\))'
+    'match': '(\\([+/\\\\*=.$<>:&|^?%#@~!-]+\\))'
     'name': 'entity.name.function.infix.elm'
   'module_exports':
     'begin': '\\('
