@@ -1,7 +1,7 @@
 {
   "name": "language-elm",
-  "version": "2.0.2-ymtszw",
-  "description": "Syntax highlighting for the Elm language 0.18+, forked by ymtszw",
+  "version": "3.0.0-ymtszw",
+  "description": "Syntax highlighting for the Elm language, forked by ymtszw",
   "repository": "https://github.com/ymtszw/language-elm",
   "license": "MIT",
   "engines": {
