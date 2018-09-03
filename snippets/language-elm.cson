@@ -16,15 +16,6 @@
   'case':
     'prefix': 'case'
     'body': 'case $1 of\n\t${2:pattern} ->'
-  'if-then-else':
-    'prefix': 'if'
-    'body':
-      """
-      if $1 then
-      \t$2
-      else
-      \t$3
-      """
   'let-in':
     'prefix': 'let'
     'body':
@@ -32,5 +23,5 @@
       let
       \t$1
       in
-      \t$2
+      $2
       """
