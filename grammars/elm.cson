@@ -157,7 +157,12 @@
     'comment': 'Floats are always decimal'
   }
   {
-    'match': '\\b([0-9]+)\\b'
+    'match': '\\b0x[0-9a-fA-F]+\\b'
+    'name': 'constant.numeric.elm'
+    'comment': 'Hexiadecimal integer representation'
+  }
+  {
+    'match': '\\b[0-9]+\\b'
     'name': 'constant.numeric.elm'
   }
   {
