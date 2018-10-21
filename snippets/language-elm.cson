@@ -6,7 +6,7 @@
     'prefix': 'module'
     'body': 'module ${1:ModuleName} exposing (${2:exposedFunctions})'
   'function':
-    'prefix': 'function'
+    'prefix': 'fn'
     'body':
       """
       ${1:functionName} : ${2:Types}
