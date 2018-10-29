@@ -13,6 +13,15 @@
       ${1:functionName} $3=
       \t${4:body}
       """
+  'function with documentation block':
+    'prefix': 'dfn'
+    'body':
+      """
+      {-| -}
+      ${1:functionName} : ${2:Types}
+      ${1:functionName} $3=
+      \t${4:body}
+      """
   'case':
     'prefix': 'case'
     'body': 'case $1 of\n\t${2:pattern} ->'
@@ -23,5 +32,4 @@
       let
       \t$1
       in
-      $2
       """
