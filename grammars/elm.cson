@@ -258,7 +258,7 @@
 'repository':
   'block_comment':
     'applyEndPatternLast': 1
-    'begin': '\\{-(?!#)'
+    'begin': '\\{-\\|?'
     'captures':
       '0':
         'name': 'punctuation.definition.comment.elm'
@@ -266,7 +266,8 @@
     'name': 'comment.block.elm'
     'patterns': [
       {
-        'include': '#block_comment'
+        'include': '#block_comment',
+        'comment': 'Allow nesting of block_comment'
       }
     ]
   'comments':
