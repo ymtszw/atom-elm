@@ -339,24 +339,13 @@
   'type_signature':
     'patterns': [
       {
-        'captures':
-          '1':
-            'name': 'entity.other.inherited-class.elm'
-          '2':
-            'name': 'variable.other.generic-type.elm'
-          '3':
-            'name': 'keyword.other.big-arrow.elm'
-        'match': '\\(\\s*([A-Z][A-Za-z]*)\\s+([a-z][A-Za-z_\']*)\\)\\s*(=>)'
-        'name': 'meta.class-constraint.elm'
-      }
-      {
         'match': '->'
         'name': 'keyword.other.arrow.elm'
       }
       {
         'match': '=>'
-        'name': 'keyword.other.big-arrow.elm'
-        'comment': 'not available in 0.18'
+        'name': 'invalid.illegal'
+        'comment': 'Type constraints are not available in 0.18+'
       }
       {
         'match': '\\b([A-Z][a-zA-Z0-9_\']*)\\.\\b'
