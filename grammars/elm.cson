@@ -88,16 +88,12 @@
   }
   {
     'name': 'meta.declaration.function.elm'
-    'comment': 'Function type annotations. Includes up to the next blank line or the next line starting with function implementations'
     'begin': '^((port\\s+)?([a-z][A-Za-z0-9_\']*)|(\\([+/\\\\*=.$<>:&|^?%#@~!-]+\\)))\\s+(:)\\s*'
     'beginCaptures':
       '2':
         'name': 'keyword.other.port.elm'
       '3':
         'name': 'entity.name.function.elm'
-      '4':
-        'name': 'invalid.illegal'
-        'comment': 'Custom infix operators. Prohibited in Elm 0.19'
       '5':
         'name': 'keyword.other.definition.type.colon.elm'
     'end': '^$|^(?=[a-z])'
@@ -106,6 +102,12 @@
         'include': '#type_signature'
       }
     ]
+    'comment':
+      '''
+      Function type annotations.
+      Includes up to the next blank line or the next line starting with function implementations.
+      Note that custom infix operators can only be defined in specific organizations as of 0.19.
+      '''
   }
   {
     'name': 'meta.lambda.function.elm'
@@ -133,6 +135,7 @@
   {
     'match': '\\b(type|case|of|let|in|as|port|exposing|alias|infix[lr]|export)\\s+'
     'name': 'keyword.other.elm'
+    'comment': 'infix[lr] can only be used in specific organizations'
   }
   {
     'match': '\\b(if|then|else)\\s+'
@@ -216,12 +219,13 @@
   }
   {
     'match': '^([a-z][A-Za-z0-9_]*|(\\([+/\\\\*=.$<>:&|^?%#@~!-]+\\)))\\s+'
-    'captures':
-      '2':
-        'name': 'invalid.illegal'
-        'comment': 'Custom infix operators cannot be defined by ordinary applications/packages as of Elm 0.19'
     'name': 'entity.name.function.elm'
-    'comment': 'Function definitions. Note that port functions can only be defined with type annotations, not with actual implementations.'
+    'comment':
+      '''
+      Function definitions.
+      Note that port functions can only be defined with type annotations, not with actual implementations.
+      Also, custom infix operators can only be defined in specific organizations as of 0.19.
+      '''
   }
   {
     'include': '#infix_op'
