@@ -88,7 +88,7 @@
   }
   {
     'name': 'meta.declaration.function.elm'
-    'comment': 'Function type annotations. Includes up to the next line of function signature header line'
+    'comment': 'Function type annotations. Includes up to the next blank line or the next line starting with function implementations'
     'begin': '^((port\\s+)?([a-z][A-Za-z0-9_\']*)|(\\([+/\\\\*=.$<>:&|^?%#@~!-]+\\)))\\s+(:)\\s*'
     'beginCaptures':
       '2':
@@ -100,7 +100,7 @@
         'comment': 'Custom infix operators. Prohibited in Elm 0.19'
       '5':
         'name': 'keyword.other.definition.type.colon.elm'
-    'end': '$'
+    'end': '^$|^(?=[a-z])'
     'patterns': [
       {
         'include': '#type_signature'
@@ -127,19 +127,6 @@
       }
       {
         'include': '#unused_variable'
-      }
-    ]
-  }
-  {
-    'name': 'meta.declaration.function.type_signature.wrapped.elm'
-    'begin': '^\\s+(->)'
-    'beginCaptures':
-      '1':
-        'name': 'keyword.other.arrow.elm'
-    'end': '$'
-    'patterns': [
-      {
-        'include': '#type_signature'
       }
     ]
   }
