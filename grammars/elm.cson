@@ -60,7 +60,7 @@
     'comment': 'Import syntax.'
     'patterns': [
       {
-        'match': '(as|exposing)'
+        'match': '\\b(as|exposing)\\b'
         'name': 'keyword.import.elm'
       }
       {
@@ -317,7 +317,7 @@
   'subtype_in_exports':
     'begin': '\\('
     'end': '\\)'
-    'name': 'meta.type.prelude.elm'
+    'name': 'meta.type.elm'
     'patterns': [
       {
         'include': '#type_tag_or_record_constructor'
@@ -335,7 +335,7 @@
     'name': 'entity.name.type.module.elm'
   'type_tag_or_record_constructor':
     'match': '\\b[A-Z][A-Za-z_\'0-9]*'
-    'name': 'support.type.prelude.elm'
+    'name': 'support.type.elm'
   'type_signature':
     'patterns': [
       {
