@@ -133,7 +133,27 @@
     ]
   }
   {
-    'match': '\\b(type|case|of|let|in|as|port|exposing|alias|infix[lr]|export)\\s+'
+    'name': 'meta.declaration.type.elm'
+    'comment': 'Custom type/type alias declarations.'
+    'begin': '^(type)\\s+(alias)?\\s*'
+    'beginCaptures':
+      '1':
+        'name': 'keyword.control.elm'
+      '2':
+        'name': 'keyword.control.elm'
+    'patterns': [
+      {
+        'match': '\\b=\\b'
+        'name': 'keyword.operator.elm'
+      }
+      {
+        'include': '#type_signature'
+      }
+    ]
+    'end': '^$'
+  }
+  {
+    'match': '\\b(case|of|let|in|as|infix[lr])\\s+'
     'name': 'keyword.other.elm'
     'comment': 'infix[lr] can only be used in specific organizations'
   }
