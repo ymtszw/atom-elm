@@ -37,7 +37,7 @@
         'include': '#module_name_on_definition'
       }
       {
-        'match': '\\bexposing\\b'
+        'match': '\\b(exposing)\\b'
         'name': 'keyword.other.elm'
       }
       {
@@ -122,7 +122,7 @@
         'include': '#type_tag_or_record_constructor'
       }
       {
-        'match': '\\bas\\b'
+        'match': '\\b(as)\\b'
         'name': 'keyword.other.elm'
       }
       {
