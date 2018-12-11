@@ -163,13 +163,13 @@
       '1':
         'name': 'keyword.control.elm'
       '2':
-        'name': 'meta.rspec.behaviour.keyword.control.elm'
+        'name': 'keyword.control.elm'
       '3':
         'name': 'support.type.elm'
     'patterns': [
       {
         'match': '\\b=\\b'
-        'name': 'keyword.operator.elm'
+        'name': 'keyword.operator.elm.meta.rspec.behaviour'
       }
       {
         'include': '#type_signature'
