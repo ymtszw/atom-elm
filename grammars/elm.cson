@@ -3,6 +3,13 @@
 ]
 'name': 'Elm'
 'scopeName': 'source.elm'
+'comment':
+  '''
+  In order for goto package to work, we must include 'entity.name.function' in the scope.
+  https://github.com/v3ss0n/goto/blob/master/lib/symbol-generator.coffee
+  Although goto package is seemingly abandoned and not work for type/class tokens,
+  it should work for funcitons.
+  '''
 'patterns': [
   {
     'match': '(`)[a-zA-Z_\']*?(`)'
@@ -92,13 +99,13 @@
   {
     'name': 'meta.declaration.type.elm'
     'comment': 'Custom type/type alias declarations. Terminated by the next blank line.'
-    'begin': '^(type)\\s+(alias)?\\s+([A-Z][A-Za-z_0-9]*)'
+    'begin': '^(type)\\s+((alias)\\s+)?([A-Z][A-Za-z_0-9]*)'
     'beginCaptures':
       '1':
         'name': 'keyword.control.elm'
-      '2':
-        'name': 'meta.rspec.behaviour.keyword.control.elm'
       '3':
+        'name': 'keyword.control.elm'
+      '4':
         'name': 'support.type.elm'
     'patterns': [
       {
