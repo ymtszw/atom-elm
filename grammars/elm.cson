@@ -90,6 +90,28 @@
     ]
   }
   {
+    'name': 'meta.declaration.type.elm'
+    'comment': 'Custom type/type alias declarations. Terminated by the next blank line.'
+    'begin': '^(type)\\s+(alias)?\\s+([A-Z][A-Za-z_0-9]*)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword.control.elm'
+      '2':
+        'name': 'meta.rspec.behaviour.keyword.control.elm'
+      '3':
+        'name': 'support.type.elm'
+    'patterns': [
+      {
+        'match': '\\b=\\b'
+        'name': 'keyword.operator.elm'
+      }
+      {
+        'include': '#type_signature'
+      }
+    ]
+    'end': '^$'
+  }
+  {
     'name': 'meta.declaration.function.port.elm'
     'begin': '^(port)\\s+([a-z][A-Za-z0-9_]*)\\s+(:)\\s*'
     'beginCaptures':
@@ -154,28 +176,6 @@
         'include': '#unused_variable'
       }
     ]
-  }
-  {
-    'name': 'meta.declaration.type.elm'
-    'comment': 'Custom type/type alias declarations. Terminated by the next blank line.'
-    'begin': '^(type)\\s+(alias)?\\s+([A-Z][A-Za-z_0-9]*)'
-    'beginCaptures':
-      '1':
-        'name': 'keyword.control.elm'
-      '2':
-        'name': 'keyword.control.elm'
-      '3':
-        'name': 'support.type.elm'
-    'patterns': [
-      {
-        'match': '\\b=\\b'
-        'name': 'keyword.operator.elm.meta.rspec.behaviour'
-      }
-      {
-        'include': '#type_signature'
-      }
-    ]
-    'end': '^$'
   }
   {
     'match': '\\b(case|of|let|in|as|infix[lr])\\s+'
