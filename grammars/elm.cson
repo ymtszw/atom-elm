@@ -70,7 +70,8 @@
         'name': 'import-wildcard.elm'
       }
       {
-        'include': '#module_name'
+        'match': '[A-Z][A-Za-z0-9._]*'
+        'name': 'constant.other.elm'
       }
       {
         'include': '#module_exports'
@@ -156,13 +157,15 @@
   }
   {
     'name': 'meta.declaration.type.elm'
-    'comment': 'Custom type/type alias declarations.'
-    'begin': '^(type)\\s+(alias)?\\s*'
+    'comment': 'Custom type/type alias declarations. Terminated by the next blank line.'
+    'begin': '^(type)\\s+(alias)?\\s+([A-Z][A-Za-z_0-9]*)'
     'beginCaptures':
       '1':
         'name': 'keyword.control.elm'
       '2':
         'name': 'keyword.control.elm'
+      '3':
+        'name': 'meta.rspec.behaviour.support.type.elm'
     'patterns': [
       {
         'match': '\\b=\\b'
@@ -246,8 +249,8 @@
     ]
   }
   {
-    'match': '\\b([A-Z][A-Za-z0-9_\']*)\\.'
-    'name': 'module-namespace.elm'
+    'match': '\\b([A-Z][A-Za-z0-9_]*)\\.'
+    'name': 'namespace.module.elm'
     'comment': 'Module names as namespaces. Ones followed by a period basically'
     'captures':
       '1':
@@ -361,11 +364,8 @@
         'name': 'punctuation.separator.comma.elm'
       }
     ]
-  'module_name':
-    'match': '[A-Z][A-Za-z0-9._\']*'
-    'name': 'variable.other.constant.elm'
   'type_tag_or_record_constructor':
-    'match': '\\b[A-Z][A-Za-z_\'0-9]*'
+    'match': '\\b[A-Z][A-Za-z_0-9]*'
     'name': 'support.type.elm'
   'type_signature':
     'patterns': [
