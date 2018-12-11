@@ -34,7 +34,9 @@
     'comment': 'Module declarations. Effect modules are basically not used in user applications though'
     'patterns': [
       {
-        'include': '#module_name_on_definition'
+        'match': '[A-Z][A-Za-z0-9._]*'
+        'name': 'entity.name.type.module.elm'
+        'comment': 'Module namespaces, periods, and basenames in declarations. Single-quotations are now disallowed'
       }
       {
         'match': '\\b(exposing)\\b'
@@ -87,14 +89,14 @@
     ]
   }
   {
-    'name': 'meta.declaration.function.elm'
-    'begin': '^((port\\s+)?([a-z][A-Za-z0-9_\']*)|(\\([+/\\\\*=.$<>:&|^?%#@~!-]+\\)))\\s+(:)\\s*'
+    'name': 'meta.declaration.function.port.elm'
+    'begin': '^(port)\\s+([a-z][A-Za-z0-9_]*)\\s+(:)\\s*'
     'beginCaptures':
-      '2':
+      '1':
         'name': 'keyword.other.port.elm'
+      '2':
+        'name': 'entity.name.function.definition.port.elm'
       '3':
-        'name': 'entity.name.function.elm'
-      '5':
         'name': 'keyword.other.definition.type.colon.elm'
     'end': '^$|^(?=[a-z])'
     'patterns': [
@@ -104,7 +106,27 @@
     ]
     'comment':
       '''
-      Function type annotations.
+      Port function type annotations.
+      Includes up to the next blank line or the next line starting with function implementations.
+      '''
+  }
+  {
+    'name': 'meta.declaration.function.elm'
+    'begin': '^([a-z][A-Za-z0-9_]*|\\([+/\\\\*=.$<>:&|^?%#@~!-]+\\))\\s+(:)\\s*'
+    'beginCaptures':
+      '1':
+        'name': 'entity.name.annotation.function.elm'
+      '2':
+        'name': 'keyword.other.definition.type.colon.elm'
+    'end': '^$|^(?=[a-z])'
+    'patterns': [
+      {
+        'include': '#type_signature'
+      }
+    ]
+    'comment':
+      '''
+      Non-port function type annotations.
       Includes up to the next blank line or the next line starting with function implementations.
       Note that custom infix operators can only be defined in specific organizations as of 0.19.
       '''
@@ -238,11 +260,11 @@
     'include': '#comments'
   }
   {
-    'match': '^([a-z][A-Za-z0-9_]*|(\\([+/\\\\*=.$<>:&|^?%#@~!-]+\\)))\\s+'
-    'name': 'entity.name.function.elm'
+    'match': '^([a-z][A-Za-z0-9_]*|\\([+/\\\\*=.$<>:&|^?%#@~!-]+\\))\\s+'
+    'name': 'entity.name.function.definition.elm'
     'comment':
       '''
-      Function definitions.
+      Function definitions (implementation body).
       Note that port functions can only be defined with type annotations, not with actual implementations.
       Also, custom infix operators can only be defined in specific organizations as of 0.19.
       '''
@@ -296,16 +318,17 @@
       }
     ]
   'infix_op':
-    'match': '(\\([+/\\\\*=.$<>:&|^?%#@~!-]+\\))'
-    'name': 'entity.name.function.infix.elm'
+    'match': '\\([+/\\\\*=.$<>:&|^?%#@~!-]+\\)'
+    'name': 'entity.name.call.function.infix.elm'
+    'comment': 'Parenthesized call of infix operators.'
   'module_exports':
     'begin': '\\('
     'end': '\\)'
     'name': 'meta.declaration.exports.elm'
     'patterns': [
       {
-        'match': '\\b[a-z][a-zA-Z_\'0-9]*'
-        'name': 'entity.name.function.elm'
+        'match': '\\b[a-z][a-zA-Z_0-9]*'
+        'name': 'entity.name.export.function.elm'
       }
       {
         'include': '#type_tag_or_record_constructor'
@@ -341,9 +364,6 @@
   'module_name':
     'match': '[A-Z][A-Za-z0-9._\']*'
     'name': 'variable.other.constant.elm'
-  'module_name_on_definition':
-    'match': '[A-Z][A-Za-z0-9._\']*'
-    'name': 'entity.name.type.module.elm'
   'type_tag_or_record_constructor':
     'match': '\\b[A-Z][A-Za-z_\'0-9]*'
     'name': 'support.type.elm'
