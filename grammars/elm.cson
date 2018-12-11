@@ -163,9 +163,9 @@
       '1':
         'name': 'keyword.control.elm'
       '2':
-        'name': 'keyword.control.elm'
+        'name': 'meta.rspec.behaviour.keyword.control.elm'
       '3':
-        'name': 'meta.rspec.behaviour.support.type.elm'
+        'name': 'support.type.elm'
     'patterns': [
       {
         'match': '\\b=\\b'
