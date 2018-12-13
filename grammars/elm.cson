@@ -99,14 +99,12 @@
   {
     'name': 'meta.declaration.type.elm'
     'comment': 'Custom type/type alias declarations. Terminated by the next blank line.'
-    'begin': '^(type)\\s+((alias)\\s+)?([A-Z][A-Za-z_0-9]*)'
+    'begin': '^(type)(\\s+(alias))?'
     'beginCaptures':
       '1':
         'name': 'keyword.control.elm'
       '3':
         'name': 'keyword.control.elm'
-      '4':
-        'name': 'support.type.elm'
     'patterns': [
       {
         'match': '\\b=\\b'
