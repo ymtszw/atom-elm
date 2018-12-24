@@ -99,7 +99,7 @@
   {
     'name': 'meta.declaration.type.elm'
     'comment': 'Custom type/type alias declarations. Terminated by the next blank line.'
-    'begin': '^(type)(\\s+(alias))?'
+    'begin': '^(type)(\\s+(alias))?\\s+'
     'beginCaptures':
       '1':
         'name': 'keyword.control.elm'
