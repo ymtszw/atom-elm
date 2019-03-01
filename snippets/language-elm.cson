@@ -1,11 +1,14 @@
 '.source.elm':
-  '{-| (doc) -}':
+  'Document block: `{-| (doc) -}`':
     'prefix': 'doc'
     'body': '{-| $1\n-}'
-  'module':
+  'Module: `module ModuleName exposing (exposedFunctions)':
     'prefix': 'module'
     'body': 'module ${1:ModuleName} exposing (${2:exposedFunctions})'
-  'function':
+  'Custom Type: `type Type = Variant`':
+    'prefix': 'type'
+    'body': 'type ${1:Type}\n\t= ${2:Variant}'
+  'Function declaration':
     'prefix': 'fn'
     'body':
       """
@@ -13,7 +16,7 @@
       ${1:functionName} $3=
       \t${4:body}
       """
-  'function with documentation block':
+  'Function declaration with documentation block':
     'prefix': 'fndoc'
     'body':
       """
